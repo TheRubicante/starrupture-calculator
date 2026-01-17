@@ -26,6 +26,12 @@ export const Recipes = {
     cycleTime: 2,
     machine: "He-3 Extractor",
   },
+  "SULPHUR ORE": {
+    output: { name: "Sulphur Ore", qty: 8 },
+    inputs: [],
+    cycleTime: 2,
+    machine: "Sulphur Extractor",
+  },
 
   //Beginning Smelter Recipes
   "TITANIUM BAR": {
@@ -371,17 +377,87 @@ export const Recipes = {
     machine: "Mega Press",
   },
 
-  //Placeholders
+  //Beginning Refinery Recipes
   "SULFURIC ACID": {
-    output: { name: "Sulfuric Acid", qty: 8},
-    inputs: [],
-    cycleTime: 2,
-    machine: "Sulfur PlaceHolder"
+    output: { name: "Sulfuric Acid", qty: 1 },
+    inputs: [
+      { name: "Sulphur Ore", qty: 2 },
+      { name: "Chemicals", qty: 1 },
+    ],
+    cycleTime: 0.5,
+    machine: "Refinery",
   },
   "PRESSURIZED HELIUM": {
     output: { name: "Pressurized Helium", qty: 1 },
-    inputs: [],
-    cycleTime: 10,
-    machine: "Placeholder",
+    inputs: [
+      { name: "Sulphur Ore", qty: 1 },
+      { name: "Helium-3", qty: 1 },
+    ],
+    cycleTime: 2,
+    machine: "Refinery",
+  },
+
+  //beginning Assembler Recipes
+  ACCUMULATOR: {
+    output: { name: "Accumulator", qty: 1 },
+    inputs: [
+      { name: "Electronics", qty: 2 },
+      { name: "Stator", qty: 1 },
+      { name: "Battery", qty: 2 },
+    ],
+    cycleTime: 6,
+    machine: "Assembler",
+  },
+  CONDENSER: {
+    output: { name: "Condenser", qty: 1 },
+    inputs: [
+      { name: "Resonator", qty: 1 },
+      { name: "Synthetic Resin", qty: 3 },
+      { name: "Nanofibre", qty: 8 },
+      { name: "Pump", qty: 3 },
+    ],
+    cycleTime: 15,
+    machine: "Assembler",
+  },
+  ELECTROMAGNET: {
+    output: { name: "Electromagnet", qty: 1 },
+    inputs: [
+      { name: "Electromagnetic Coil", qty: 3 },
+      { name: "Synthetic Resin", qty: 3 },
+      { name: "Accumulator", qty: 2 },
+    ],
+    cycleTime: 5,
+    machine: "Assembler",
+  },
+  "LASER EMITTER": {
+    output: { name: "Laser Emitter", qty: 1 },
+    inputs: [
+      { name: "Lens", qty: 2 },
+      { name: "Resonator", qty: 1 },
+      { name: "Electromagnetic Coil", qty: 6 },
+    ],
+    cycleTime: 6,
+    machine: "Assembler",
+  },
+  "PRESSURE TANK": {
+    output: { name: "Pressure Tank", qty: 1 },
+    inputs: [
+      { name: "Heat Resistant Sheet", qty: 5 },
+      { name: "Titanium Housing", qty: 3 },
+      { name: "Pump", qty: 3 },
+      { name: "Valve", qty: 2 },
+    ],
+    cycleTime: 12,
+    machine: "Assembler",
+  },
+  RESONATOR: {
+    output: { name: "Resonator", qty: 1 },
+    inputs: [
+      { name: "Accumulator", qty: 1 },
+      { name: "Generator", qty: 2 },
+      { name: "Liquid Helium", qty: 2 },
+    ],
+    cycleTime: 12,
+    machine: "Assembler",
   },
 };
