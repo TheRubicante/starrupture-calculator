@@ -26,12 +26,6 @@ export const Recipes = {
     cycleTime: 2,
     machine: "He-3 Extractor",
   },
-  "SULFURIC ACID": {
-    output: { name: "Sulfuric Acid", qty: 8},
-    inputs: [],
-    cycleTime: 2,
-    machine: "Sulfur PlaceHolder"
-  },
 
   //Beginning Smelter Recipes
   "TITANIUM BAR": {
@@ -375,6 +369,14 @@ export const Recipes = {
     ],
     cycleTime: 10,
     machine: "Mega Press",
+  },
+
+  //Placeholders
+  "SULFURIC ACID": {
+    output: { name: "Sulfuric Acid", qty: 8},
+    inputs: [],
+    cycleTime: 2,
+    machine: "Sulfur PlaceHolder"
   },
   "PRESSURIZED HELIUM": {
     output: { name: "Pressurized Helium", qty: 1 },

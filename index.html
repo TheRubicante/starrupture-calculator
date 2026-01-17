@@ -188,8 +188,8 @@
     </div>
 
     <h5>
-      Note: Machine and Rail counts are rounded up to nearest whole number (indicated by *), but
-      rates assume target rate.<br />
+      Note: Machine and Rail counts are rounded up to nearest whole number
+      (indicated by *), but rates assume target rate.<br />
       Multiple Input or Output rails required will mean you'll have to do some
       manual division of rails to allow throughput.<br />
       If you're sharing rails, they will only ever use a single rail (shortest
@@ -209,6 +209,18 @@
         </tr>
       </thead>
       <tbody id="output"></tbody>
+    </table>
+
+    <h2>Machine Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Machine Type</th>
+          <th class="num">Total Machines</th>
+          <th>Breakdown</th>
+        </tr>
+      </thead>
+      <tbody id="machine-summary-output"></tbody>
     </table>
 
     <script type="module" src="main.js"></script>

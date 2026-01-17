@@ -5,17 +5,16 @@ const RailSpeeds = { 1: 2, 2: 4, 3: 8 };
 const itemSelect = document.getElementById("item");
 const machineFilter = document.getElementById("machineFilter");
 const output = document.getElementById("output");
+const machineSummaryOutput = document.getElementById("machine-summary-output");
 
 /* --------------------------------------------------
    MACHINE FILTER + TARGET ITEM POPULATION
 -------------------------------------------------- */
 
-// Collect unique machine types
 const machineTypes = Array.from(
   new Set(Object.values(Recipes).map((r) => r.machine)),
 ).sort((a, b) => a.localeCompare(b));
 
-// Populate Machine Type dropdown
 machineFilter.innerHTML = `<option value="ALL">All</option>`;
 machineTypes.forEach((machine) => {
   const opt = document.createElement("option");
@@ -24,17 +23,12 @@ machineTypes.forEach((machine) => {
   machineFilter.appendChild(opt);
 });
 
-// Populate Target Item dropdown (filtered + sorted)
 function populateTargetItems(machineType = "ALL") {
   itemSelect.innerHTML = "";
 
   const filteredRecipes = Object.values(Recipes)
-    .filter(
-      (r) => machineType === "ALL" || r.machine === machineType,
-    )
-    .sort((a, b) =>
-      a.output.name.localeCompare(b.output.name),
-    );
+    .filter((r) => machineType === "ALL" || r.machine === machineType)
+    .sort((a, b) => a.output.name.localeCompare(b.output.name));
 
   filteredRecipes.forEach((recipe) => {
     const opt = document.createElement("option");
@@ -44,16 +38,14 @@ function populateTargetItems(machineType = "ALL") {
   });
 }
 
-// Initial population
 populateTargetItems();
 
-// Rebuild Target Items when Machine Type changes
 machineFilter.addEventListener("change", () => {
   populateTargetItems(machineFilter.value);
 });
 
 /* --------------------------------------------------
-   PRODUCTION TREE LOGIC (UNCHANGED)
+   PRODUCTION TREE
 -------------------------------------------------- */
 
 function buildNode(itemId, targetRateSec) {
@@ -153,6 +145,50 @@ function renderRows(node, rateType, railLevel, depth = 0, rows = []) {
   return rows;
 }
 
+/* --------------------------------------------------
+   NEW: MACHINE SUMMARY
+-------------------------------------------------- */
+
+function collectMachines(node, summary) {
+  const machine = node.recipe.machine;
+  const item = node.item;
+  const count = Math.ceil(node.machinesExact);
+
+  if (!summary[machine]) {
+    summary[machine] = { total: 0, breakdown: {} };
+  }
+
+  summary[machine].total += count;
+  summary[machine].breakdown[item] =
+    (summary[machine].breakdown[item] || 0) + count;
+
+  node.inputs.forEach((child) => collectMachines(child, summary));
+}
+
+function renderMachineSummary(summary) {
+  machineSummaryOutput.innerHTML = "";
+
+  Object.entries(summary).forEach(([machine, data]) => {
+    const tr = document.createElement("tr");
+
+    const breakdown = Object.entries(data.breakdown)
+      .map(([item, count]) => `${count} ${item}`)
+      .join(", ");
+
+    tr.innerHTML = `
+      <td>${machine}</td>
+      <td class="num">${data.total}</td>
+      <td>${breakdown}</td>
+    `;
+
+    machineSummaryOutput.appendChild(tr);
+  });
+}
+
+/* --------------------------------------------------
+   CALCULATE
+-------------------------------------------------- */
+
 function calculate() {
   const item = itemSelect.value;
   const rawRate = parseFloat(document.getElementById("rate").value);
@@ -165,27 +201,30 @@ function calculate() {
   const rateSec = rateType === "min" ? rawRate / 60 : rawRate;
 
   output.innerHTML = "";
+  machineSummaryOutput.innerHTML = "";
+
   const tree = buildNode(item, rateSec);
-  const rows = renderRows(tree, rateType, railLevel);
-  rows.forEach((r) => output.appendChild(r));
+
+  renderRows(tree, rateType, railLevel).forEach((r) =>
+    output.appendChild(r),
+  );
+
+  const summary = {};
+  collectMachines(tree, summary);
+  renderMachineSummary(summary);
 }
 
 /* --------------------------------------------------
    EVENTS
 -------------------------------------------------- */
 
-document
-  .getElementById("calc-form")
-  .addEventListener("submit", (e) => {
-    e.preventDefault();
-    calculate();
-  });
+document.getElementById("calc-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  calculate();
+});
 
-document
-  .getElementById("calculate-btn")
-  .addEventListener("click", calculate);
+document.getElementById("calculate-btn").addEventListener("click", calculate);
 
-// Auto-convert rate on unit change
 const rateInput = document.getElementById("rate");
 const rateTypeSelect = document.getElementById("rateType");
 
