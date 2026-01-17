@@ -460,4 +460,36 @@ export const Recipes = {
     cycleTime: 12,
     machine: "Assembler",
   },
+
+  //Placeholder Recipes
+  "SYNTHETIC RESIN": {
+    output: { name: "Synthetic Resin", qty: 1 },
+    inputs: [],
+    cycleTime: 1,
+    machine: "PlaceHolder",
+  },
+  NANOFIBRE: {
+    output: { name: "Nanofibre", qty: 1 },
+    inputs: [],
+    cycleTime: 1,
+    machine: "PlaceHolder",
+  },
+  GENERATOR: {
+    output: { name: "Generator", qty: 1 },
+    inputs: [],
+    cycleTime: 1,
+    machine: "Placeholder",
+  },
+  "LIQUID HELIUM": {
+    output: { name: "Liquid Helium", qty: 1 },
+    inputs: [],
+    cycleTime: 1,
+    machine: "Placeholder",
+  },
+  LENS: {
+    output: { name: "Lens", qty: 1 },
+    inputs: [],
+    cycleTime: 1,
+    machine: "Placeholder",
+  },
 };
