@@ -24,13 +24,13 @@ export const Recipes = {
     output: { name: "Helium-3", qty: 8 },
     inputs: [],
     cycleTime: 2,
-    machine: "He-3 Extractor",
+    machine: "Extractor",
   },
   "SULPHUR ORE": {
     output: { name: "Sulphur Ore", qty: 8 },
     inputs: [],
     cycleTime: 2,
-    machine: "Sulphur Extractor",
+    machine: "Extractor",
   },
 
   //Beginning Smelter Recipes
@@ -478,18 +478,18 @@ export const Recipes = {
     output: { name: "Generator", qty: 1 },
     inputs: [],
     cycleTime: 1,
-    machine: "Placeholder",
+    machine: "PlaceHolder",
   },
   "LIQUID HELIUM": {
     output: { name: "Liquid Helium", qty: 1 },
     inputs: [],
     cycleTime: 1,
-    machine: "Placeholder",
+    machine: "PlaceHolder",
   },
   LENS: {
     output: { name: "Lens", qty: 1 },
     inputs: [],
     cycleTime: 1,
-    machine: "Placeholder",
+    machine: "PlaceHolder",
   },
 };
