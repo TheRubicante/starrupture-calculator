@@ -30,7 +30,7 @@ export const Recipes = {
     output: { name: "Sulfuric Acid", qty: 8},
     inputs: [],
     cycleTime: 2,
-    machine: "Sulfur Extractor"
+    machine: "Sulfur PlaceHolder"
   },
 
   //Beginning Smelter Recipes
@@ -206,7 +206,7 @@ export const Recipes = {
     inputs: [
       { name: "Wolfram Plate", qty: 1 },
       { name: "Titanium Sheet", qty: 2 },
-      { name: "Glass ", qty: 1 },
+      { name: "Glass", qty: 1 },
     ],
     cycleTime: 4,
     machine: "Furnace",
@@ -268,7 +268,7 @@ export const Recipes = {
     inputs: [
       { name: "Basic Building Material", qty: 40 },
       { name: "Inductor", qty: 2 },
-      { name: "Glass ", qty: 2 },
+      { name: "Glass", qty: 2 },
       { name: "Titanium Housing", qty: 2 },
     ],
     cycleTime: 6,
@@ -375,5 +375,11 @@ export const Recipes = {
     ],
     cycleTime: 10,
     machine: "Mega Press",
+  },
+  "PRESSURIZED HELIUM": {
+    output: { name: "Pressurized Helium", qty: 1 },
+    inputs: [],
+    cycleTime: 10,
+    machine: "Placeholder",
   },
 };
