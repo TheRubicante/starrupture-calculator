@@ -461,13 +461,39 @@ export const Recipes = {
     machine: "Assembler",
   },
 
-  //Placeholder Recipes
+//beginning Compounder Recipes
+  
   "SYNTHETIC RESIN": {
     output: { name: "Synthetic Resin", qty: 1 },
-    inputs: [],
-    cycleTime: 1,
-    machine: "PlaceHolder",
+    inputs: [
+      { name: "Hardening Agent", qty: 2 },
+      { name: "Sulphuric Acid", qty: 4 },
+      { name: "Calcite Sheets", qty: 10 },
+    ],
+    cycleTime: 3,
+    machine: "Compounder",
   },
+  "LIQUID HELIUM": {
+    output: { name: "Liquid Helium", qty: 1 },
+    inputs: [
+      { name: "Hardening Agent", qty: 1 },
+      { name: "Pressurized Helium", qty: 1 },      
+    ],
+    cycleTime: 3,
+    machine: "Compounder",
+  },
+  LENS: {
+    output: { name: "Lens", qty: 1 },
+    inputs: [
+      { name: "Hardening Agent", qty: 8 },
+      { name: "Glass", qty: 10 },
+      { name: "Synthetic Resin", qty: 8 },
+    ],
+    cycleTime: 12,
+    machine: "Compounder",
+  },
+
+  //Placeholder Recipes
   NANOFIBRE: {
     output: { name: "Nanofibre", qty: 1 },
     inputs: [],
@@ -480,16 +506,5 @@ export const Recipes = {
     cycleTime: 1,
     machine: "PlaceHolder",
   },
-  "LIQUID HELIUM": {
-    output: { name: "Liquid Helium", qty: 1 },
-    inputs: [],
-    cycleTime: 1,
-    machine: "PlaceHolder",
-  },
-  LENS: {
-    output: { name: "Lens", qty: 1 },
-    inputs: [],
-    cycleTime: 1,
-    machine: "PlaceHolder",
-  },
+  
 };
